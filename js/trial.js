@@ -5,11 +5,7 @@ var monster1,monster2,monster3;
 var backgroundImage;
 var invisibleGround,ground;
 
-var database,allWords,wordObj,gameObj;
-
-var allLetters = "abcdefghijklmnopqrstuvwxyz";
-var allLettersArray = allLetters.split("");
-var loadedAlphabetImages = [];
+var database;
 
 function preload(){
   pikachuFront=loadImage("Images/Pikachu/pikachuFront.png");
@@ -23,21 +19,12 @@ function preload(){
   monster2=loadImage("Images/Monsters/Monster2.png");
   monster3=loadImage("Images/Monsters/Monster3.png");
   backgroundImage = loadImage("Images/background.jpg");
-
-  for(var i in allLettersArray) {
-    loadedAlphabetImages.push(loadImage("Images/Alphabets/" + allLettersArray[i] + ".png"));
-  }
 }
 
 function setup() {
   createCanvas(1200,400);
 
   database=firebase.database();
-
-  gameObj = new Game();
-  gameObj.start();
-
-  wordObj = new Word();
 
   invisibleGround = createSprite(110000,400,220000,10);
   ground = createSprite(110000,390,220000,10);
@@ -134,8 +121,6 @@ function draw() {
   pikachu.collide(invisibleGround);
   buildingGroup.collide(invisibleGround);
   monsterGroup.collide(invisibleGround);
-
-  wordObj.display();
   
   drawSprites();
 }
@@ -178,4 +163,10 @@ function createMonsters(posX){
       monster.addImage("Third",monster3);
   }
   monsterGroup.add(monster);
+}
+
+var cam = 0;
+if(camera.position.x===cam+20){
+    var bu
+    cam+=20
 }
